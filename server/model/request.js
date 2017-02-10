@@ -2,8 +2,21 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const requestSchema = new schema({
-  userID:schema.Types.ObjectId,
-  bookID:schema.Types.ObjectId,
+  requesterID:{
+    type:schema.Types.ObjectId,
+    ref:'User',
+    required:true
+  },
+  ownerID:{
+    type:schema.Types.ObjectId,
+    ref:'User',
+    required:true
+  },
+  bookID:{
+    type:schema.Types.ObjectId,
+    ref:'Book',
+    required:true
+  },
   approved:{
     type:Boolean,
     default:false
