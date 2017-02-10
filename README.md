@@ -12,3 +12,9 @@ npm start
 ```
 npm start production
 ```
+
+## Config
+
+```
+export API_KEY=Your_Google_API_KEY
+```
