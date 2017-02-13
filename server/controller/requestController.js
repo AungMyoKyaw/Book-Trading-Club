@@ -20,7 +20,11 @@ function requestBook(req,res){
     if(request){
       res.sendStatus(202);
     } else {
-      return newRequest.save();
+      if(requesterID==ownerID){
+        res.sendStatus(202);
+      } else {
+        return newRequest.save();
+      }
     }
   })
   .then(newrequest=>{
