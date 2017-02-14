@@ -1,0 +1,28 @@
+<md-card fxLayout
+         fxLayoutAlign="center"
+         fxLayoutWrap
+>
+  <md-card-header fxFlex="80%" fxFlex.xs="100%">
+    <md-card-title>
+      <h2>Login</h2>
+    </md-card-title>
+  </md-card-header>
+  <md-card-content fxFlex="80%" fxFlex.xs="100%">
+    <md-input-container class="full-width">
+      <input md-input placeholder="Email Address" type="email">
+    </md-input-container>
+    <md-input-container class="full-width">
+      <input md-input placeholder="Password" type="password">
+    </md-input-container>
+  </md-card-content>
+  <md-card-actions fxFlex="80%" fxFlex.xs="100%">
+    <div fxLayout
+         fxLayout.xs="column"
+         fxLayoutAlign.xs="center"
+         fxLayoutGap.xs="1em"
+    >
+    <button md-raised-button routerLinkActive="active" color="primary" fxFlex="10%" fxFlex.xs="100%">Login</button>
+    <a md-raised-button routerLink="/signup" fxFlex="10%" fxFlex.xs="100%">Register</a>
+    </div>
+  </md-card-actions>
+</md-card>
