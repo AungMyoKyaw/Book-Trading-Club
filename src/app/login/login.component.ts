@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,private appComponent:AppComponent,private userService:UserService) { }
 
   ngOnInit() {
   }
 
+  login(value){
+    this.userService.login(value)
+      .subscribe(result=>{
+        this.router.navigateByUrl('books');
+        this.appComponent.changeToAuth(true);
+      },
+      error=>{
+        this.appComponent.changeToAuth(false);
+      });
+  }
 }

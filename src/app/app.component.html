@@ -1,55 +1,66 @@
 <md-toolbar color="accent">
-  <a md-button href="/">
+  <a md-button routerLink="/home" routerLinkActive="active">
     <md-icon>home</md-icon>
   </a>
   <span class="fill-remaining-space"></span>
   <div fxLayout
-       fxHide.xs="true"
-       fxHide.sm="true"
-       fxShow.gt-md ="true"
+       fxShow = "true"
+       fxHide.xs = "true"
   >
-    <a md-button routerLink="/signup" routerLinkActive="active">Sign Up</a>
-    <a md-button routerLink="/login" routerLinkActive="active">Login</a>
-    <a md-icon-button routerLink="/books" routerLinkActive="active">
-      <md-icon>dashboard</md-icon>
-    </a>
-    <a md-icon-button routerLink="/userbooks" routerLinkActive="active">
-      <md-icon>perm_identity</md-icon>
-    </a>
-    <a md-icon-button routerLink="/settings" routerLinkActive="active">
-      <md-icon>settings</md-icon>
-    </a>
-    <a md-icon-button>
-      <md-icon>power_settings_new</md-icon>
-    </a>
+    <span *ngIf="!auth">
+      <a md-button routerLink="/signup" routerLinkActive="active">Sign Up</a>
+      <a md-button routerLink="/login" routerLinkActive="active">Login</a>
+    </span>
+    <span *ngIf="auth">
+      <a md-icon-button routerLink="/books" routerLinkActive="active">
+        <md-icon>dashboard</md-icon>
+      </a>
+      <a md-icon-button routerLink="/userbooks" routerLinkActive="active">
+        <md-icon>perm_identity</md-icon>
+      </a>
+      <a md-icon-button routerLink="/settings" routerLinkActive="active">
+        <md-icon>settings</md-icon>
+      </a>
+      <a md-icon-button (click)="logout()">
+        <md-icon>power_settings_new</md-icon>
+      </a>
+    </span>
   </div>
+
   <div fxLayout
-       fxHide.lg="true"
-       fxHide.lg-gt="true"
+       fxHide = "true"
        fxShow.xs="true"
-       fxShow.sm="true"
-       fxShow.md="true"
   >
     <button md-icon-button [mdMenuTriggerFor]="menu">
       <md-icon>view_headline</md-icon>
     </button>
     <md-menu #menu="mdMenu" x-position="before">
-      <a md-menu-item routerLink="/books" routerLinkActive="active">
-        <md-icon>dashboard</md-icon>
-        Dashboard
-      </a>
-      <a md-menu-item routerLink="/userbooks" routerLinkActive="active">
-        <md-icon>perm_identity</md-icon>
-        My Books
-      </a>
-      <a md-menu-item routerLink="/settings" routerLinkActive="active">
-        <md-icon>settings</md-icon>
-        Settings
-      </a>
-      <a md-menu-item>
-        <md-icon>power_settings_new</md-icon>
-        Logout
-      </a>
+      <span *ngIf="!auth">
+        <a md-menu-item routerLink="/signup" routerLinkActive="active">
+          SignUp
+        </a>
+        <a md-menu-item routerLink="login" routerLinkActive="login">
+          Login
+        </a>
+      </span>
+      <span *ngIf="auth">
+        <a md-menu-item routerLink="/books" routerLinkActive="active">
+          <md-icon>dashboard</md-icon>
+          Dashboard
+        </a>
+        <a md-menu-item routerLink="/userbooks" routerLinkActive="active">
+          <md-icon>perm_identity</md-icon>
+          My Books
+        </a>
+        <a md-menu-item routerLink="/settings" routerLinkActive="active">
+          <md-icon>settings</md-icon>
+          Settings
+        </a>
+        <a md-menu-item (click)="logout()">
+          <md-icon>power_settings_new</md-icon>
+          Logout
+        </a>
+      </span>
     </md-menu>
   </div>
 </md-toolbar>

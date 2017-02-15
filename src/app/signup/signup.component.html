@@ -2,29 +2,31 @@
          fxLayoutWrap
          fxLayoutAlign="center"
 >
-  <md-card-header fxFlex="80%" fxFlex.xs="100%">
+  <md-card-header fxFlex="60%" fxFlex.xs="100%">
     <md-card-title>
       <h2>SignUp</h2>
     </md-card-title>
   </md-card-header>
-  <md-card-content fxFlex="80%" fxFlex.xs="100%">
-    <md-input-container class="full-width">
-      <input md-input placeholder="Name">
-    </md-input-container>
-    <md-input-container class="full-width">
-      <input md-input placeholder="Email Address" type="email">
-    </md-input-container>
-    <md-input-container class="full-width">
-      <input md-input placeholder="Password" type="password">
-    </md-input-container>
-  </md-card-content>
-  <md-card-actions fxFlex="80%" fxFlex.xs="100%">
-    <div fxLayout
-         fxLayout.xs="column"
-         fxLayoutGap.xs="1em"
-    >
-      <button md-raised-button color="primary" fxFlex="10%">SignUp</button>
-      <a md-raised-button routerLink="/login" fxFlex="10%">Login</a>
-    </div>
-  </md-card-actions>
+  <form #f="ngForm" (ngSubmit)="signup(f.value)" fxFlex="100%" fxLayout fxLayoutWrap fxLayoutAlign="center">
+    <md-card-content fxFlex="60%" fxFlex.xs="100%">
+      <md-input-container class="full-width">
+        <input md-input placeholder="Name" type="text" name="username" ngModel>
+      </md-input-container>
+      <md-input-container class="full-width">
+        <input md-input placeholder="Email Address" type="email" required="true" name="email" ngModel>
+      </md-input-container>
+      <md-input-container class="full-width">
+        <input md-input placeholder="Password" type="password" required="true" name="password" ngModel>
+      </md-input-container>
+    </md-card-content>
+    <md-card-actions fxFlex="60%" fxFlex.xs="100%">
+      <div fxLayout
+           fxLayout.xs="column"
+           fxLayoutGap.xs="1em"
+      >
+        <button md-raised-button color="primary" fxFlex="10%" type="submit">SignUp</button>
+        <a md-raised-button routerLink="/login" fxFlex="10%">Login</a>
+      </div>
+    </md-card-actions>
+  </form>
 </md-card>

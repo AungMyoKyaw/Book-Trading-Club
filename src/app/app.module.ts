@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { BooksComponent } from './books/books.component';
 import { UserbooksComponent } from './userbooks/userbooks.component';
 import { SettingsComponent } from './settings/settings.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SettingsComponent } from './settings/settings.component';
     LoginComponent,
     BooksComponent,
     UserbooksComponent,
-    SettingsComponent
+    SettingsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,15 @@ import { SettingsComponent } from './settings/settings.component';
     MaterialModule.forRoot(),
     FlexLayoutModule,
     RouterModule.forRoot([
+      {
+        path:'',
+        redirectTo:'home',
+        pathMatch:'full'
+      },
+      {
+        path:'home',
+        component:HomeComponent
+      },
       {
         path:'signup',
         component:SignupComponent

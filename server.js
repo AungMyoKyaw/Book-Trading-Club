@@ -57,6 +57,7 @@ app.use(express.static(__dirname+'/dist'));
 //special Api List
 const specialRouteList = glob.sync('./server/route/special/*.js');
 specialRouteList.forEach(specialRoute=>{
+  console.log(specialRoute);
   app.use('/api',require(specialRoute));
 });
 
