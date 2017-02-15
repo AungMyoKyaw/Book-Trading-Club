@@ -7,15 +7,16 @@
       <h2>Update Profile</h2>
     </md-card-title>
   </md-card-header>
+  <form fxFlex="100%" fxLayout fxLayoutAlign="center" fxLayoutWrap #f="ngForm" (ngSubmit)="updateUserInfo(f.value)">
   <md-card-content fxFlex="80%" fxFlex.xs="100%">
     <md-input-container class="full-width">
-      <input md-input placeholder="Name" type="text">
+      <input md-input placeholder="{{userInfo.username}}" type="text" name="username" ngModel>
     </md-input-container>
     <md-input-container class="full-width">
-      <input md-input placeholder="City" type="text">
+      <input md-input placeholder="{{userInfo.city}}" type="text" name="city" ngModel>
     </md-input-container>
     <md-input-container class="full-width">
-      <input md-input placeholder="State" type="text">
+      <input md-input placeholder="{{userInfo.state}}" type="text" name="state" ngModel>
     </md-input-container>
   </md-card-content>
   <md-card-actions fxFlex="80%" fxFlex.xs="100%">
@@ -23,9 +24,10 @@
          fxLayoutWrap.xs
          fxLayoutGap.xs="1em"
     >
-      <button md-raised-button color="primary" fxFlex="30%" fxFlex.xs="100%">Save Changes</button>
+      <button md-raised-button color="primary" fxFlex="30%" fxFlex.xs="100%" type="submit">Save Changes</button>
     </div>
   </md-card-actions>
+  </form>
 </md-card>
 
 <md-card fxLayout

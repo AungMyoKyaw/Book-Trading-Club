@@ -43,9 +43,24 @@ export class UserService {
                     .map(res=>res);
   }
 
+  getUserInfo(){
+    let url = `http://localhost:4444/api/user`;
+    return this.http.get(url)
+                   .map(res=>res.json());
+  }
+
+  updateUserInfo(data:any){
+    let url = `http://localhost:4444/api/user`;
+    let body = JSON.stringify(data);
+    let headers = new Headers({'Content-Type':'application/json'});
+    let reqOptions = new RequestOptions({headers:headers});
+    return  this.http.put(url,body,reqOptions)
+                     .map(res=>res.json());
+  }
+
   openSnackBar(message:string){
     this.snackBar.open(message,'OK',{
-      duration:2500
+      duration:3000
     });
   }
 }
