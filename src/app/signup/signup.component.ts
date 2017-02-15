@@ -20,8 +20,10 @@ export class SignupComponent implements OnInit {
     this.userService.signUp(value)
       .subscribe(result=>{
         this.appComponent.changeToAuth(true);
+        this.userService.openSnackBar('User account is successfully created')
         this.router.navigateByUrl('books');
       },error=>{
+        this.userService.openSnackBar('Error on creating user account!')
         this.appComponent.changeToAuth(false);
       });
   }

@@ -18,10 +18,13 @@ export class LoginComponent implements OnInit {
   login(value){
     this.userService.login(value)
       .subscribe(result=>{
+        this.userService.openSnackBar('Successfully Login !')
         this.router.navigateByUrl('books');
         this.appComponent.changeToAuth(true);
       },
       error=>{
+        console.log(error);
+        this.userService.openSnackBar(`${error.statusText}. Pls Try Again`)
         this.appComponent.changeToAuth(false);
       });
   }
