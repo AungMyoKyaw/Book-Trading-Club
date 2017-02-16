@@ -7,7 +7,7 @@
       <h2>Update Profile</h2>
     </md-card-title>
   </md-card-header>
-  <form fxFlex="100%" fxLayout fxLayoutAlign="center" fxLayoutWrap #f="ngForm" (ngSubmit)="updateUserInfo(f.value)">
+  <form fxFlex="100%" fxLayout fxLayoutAlign="center" fxLayoutWrap #profile="ngForm" (ngSubmit)="updateUserInfo(profile.value)">
   <md-card-content fxFlex="80%" fxFlex.xs="100%">
     <md-input-container class="full-width">
       <input md-input placeholder="{{userInfo.username}}" type="text" name="username" ngModel>
