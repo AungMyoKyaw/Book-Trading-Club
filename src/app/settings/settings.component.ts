@@ -49,6 +49,30 @@ export class SettingsComponent implements OnInit {
       })
   }
 
+  changeUserPassword(value){
+    this.userService.changeUserPassword(value)
+      .subscribe(result=>{
+        this.userService.logout()
+          .subscribe(result=>{
+            this.router.navigateByUrl('login');
+            this.appComponent.changeToAuth(false);
+            this.userService.openSnackBar('Successfully updated user password.Pls Login Again');
+          },
+          error=>{
+            this.router.navigateByUrl('login');
+            this.appComponent.changeToAuth(false);
+            this.userService.openSnackBar('Pls Refresh Browser');
+          })
+      },
+      error=>{
+        if(error.status == 401){
+          this.userService.openSnackBar('Wrong Password');
+        } else {
+          this.userService.openSnackBar('Error on updating user password.')
+        }
+      })
+  }
+
   ngOnInit() {
     this.getUserInfo();
   }

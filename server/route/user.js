@@ -5,4 +5,7 @@ router.route('/user')
       .get(user.userInfo)
       .put(user.updateInfo);
 
+router.route('/user/password/')
+      .put(user.changePassword);
+
 module.exports  = router;

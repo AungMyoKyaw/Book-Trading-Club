@@ -39,12 +39,13 @@
       <h2>Change Password</h2>
     </md-card-title>
   </md-card-header>
+  <form #f="ngForm" (ngSubmit)="changeUserPassword(f.value)" fxFlex="100%" fxLayout fxLayoutAlign="center" fxLayoutWrap>
   <md-card-content fxFlex="80%" fxFlex.xs="100%">
     <md-input-container class="full-width">
-      <input md-input placeholder="Current Password" type="password">
+      <input md-input placeholder="Current Password" type="password" name="oldPassword" ngModel>
     </md-input-container>
     <md-input-container class="full-width">
-      <input md-input placeholder="New Password" type="password">
+      <input md-input placeholder="New Password" type="password" name="newPassword" ngModel>
     </md-input-container>
   </md-card-content>
   <md-card-actions fxFlex="80%" fxFlex.xs="100%">
@@ -55,4 +56,5 @@
       <button md-raised-button color="primary" fxFlex="30%" fxFlex.xs="100%">Save Changes</button>
     </div>
   </md-card-actions>
+  </form>
 </md-card>

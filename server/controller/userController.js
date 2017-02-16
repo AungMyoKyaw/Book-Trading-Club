@@ -31,7 +31,37 @@ function updateInfo(req,res){
       });
 }
 
+function changePassword(req,res){
+  let oldPassword = req.body.oldPassword;
+  let newPassword = req.body.newPassword;
+  let userId = req.user._id;
+
+  User.findById(userId)
+    .then(user=>{
+      if(user.validPassword(oldPassword)){
+        return user;
+      } else {
+        throw {status:401,message:'Wrong Password'}
+      }
+    })
+    .then(userValid=>{
+      userValid.password = userValid.generateHash(newPassword);
+      return userValid.save();
+    })
+    .then(userNew=>{
+      res.json(userNew);
+    })
+    .catch(err=>{
+      if(err.status){
+        res.status(err.status).json({err:err.message});
+      } else {
+        res.status(500).json({err:err.message});
+      }
+    });
+}
+
 module.exports = {
   userInfo,
-  updateInfo
+  updateInfo,
+  changePassword
 }

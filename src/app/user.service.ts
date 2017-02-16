@@ -58,6 +58,15 @@ export class UserService {
                      .map(res=>res.json());
   }
 
+  changeUserPassword(data:any){
+    let url = `http://localhost:4444/api/user/password`;
+    let body = JSON.stringify(data);
+    let headers = new Headers({'Content-Type':'application/json'});
+    let reqOptions = new RequestOptions({headers:headers});
+    return this.http.put(url,body,reqOptions)
+                    .map(res=>res.json());
+  }
+
   openSnackBar(message:string){
     this.snackBar.open(message,'OK',{
       duration:3000
