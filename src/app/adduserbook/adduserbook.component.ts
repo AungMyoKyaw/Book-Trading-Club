@@ -1,23 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 import {UserbookService} from '../userbook.service';
+import { UserService } from '../user.service';
 import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-adduserbook',
   templateUrl: './adduserbook.component.html',
   styleUrls: ['./adduserbook.component.css'],
-  providers:[UserbookService]
+  providers:[UserbookService,UserService]
 })
 export class AdduserbookComponent implements OnInit{
   searchText:string;
-  books:[any];
+  books:[any]
   cols:number = 6;
   loading:boolean = true;
+  addingBook:boolean = false;
   error:boolean = false;
   isfound:boolean = true;
+  addedBook=[];
 
-  constructor(public dialogRef:MdDialogRef<any>,private userBookService:UserbookService,private router:Router){}
+  constructor(public dialogRef:MdDialogRef<any>,private userBookService:UserbookService,private router:Router,private userService:UserService){}
 
   setCols(){
     if(window.innerWidth<=480){
@@ -46,6 +49,20 @@ export class AdduserbookComponent implements OnInit{
         this.loading = false;
         this.error = true;
         console.log(error);
+      })
+  }
+
+  addBook(book:any){
+    this.addingBook = true;
+    this.userBookService.addBook(book)
+      .subscribe(result=>{
+        this.addingBook = false;
+        this.addedBook.push(book.id);
+        this.userService.openSnackBar('Successfully added.')
+      },
+      error=>{
+        this.addingBook = false;
+        this.userService.openSnackBar(error.message);
       })
   }
 

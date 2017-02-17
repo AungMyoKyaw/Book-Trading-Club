@@ -12,8 +12,7 @@ const bookSchema = new schema({
   },
   authors:[String],
   publisher:{
-    type:String,
-    required:true
+    type:String
   },
   industryIdentifiers:[{
     type:{

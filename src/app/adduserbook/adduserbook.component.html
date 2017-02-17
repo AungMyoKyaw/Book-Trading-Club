@@ -3,6 +3,7 @@
   <button md-icon-button md-dialog-close class="close">&times;</button>
 </h2>
 <h3>{{searchText}}</h3>
+<md-progress-bar mode="indeterminate" *ngIf="addingBook"></md-progress-bar>
 <md-dialog-content>
   <div fxLayout fxLayoutAlign="center">
     <md-spinner *ngIf="loading" color="warn" fxFlex="40%"></md-spinner>
@@ -18,7 +19,8 @@
       </md-grid-tile-header>
       <img src="{{book.thumbnail}}" alt="{{book.title}}" class="full-width">
       <md-grid-tile-footer>
-        <button md-raised-button color="primary" class="full-width-button">Add Book</button>
+        <button md-raised-button color="primary" class="full-width-button" (click)="addBook(book)" *ngIf="addedBook ? addedBook.indexOf(book.id)==-1 : []">Add Book</button>
+        <button md-raised-button color="warn" class="full-width-button" *ngIf="addedBook ? addedBook.indexOf(book.id)!==-1 : []">Added</button>
       </md-grid-tile-footer>
     </md-grid-tile>
   </md-grid-list>
