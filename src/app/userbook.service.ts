@@ -22,4 +22,10 @@ export class UserbookService {
     return this.http.post(url,body,reqOptions)
       .map(res=>res);
   }
+
+  getAllBook(limit:number,offset:number){
+    let url = `http://localhost:4444/api/book?limit=${limit}&offset=${offset}`;
+    return this.http.get(url)
+      .map(res=>res.json());
+  }
 }

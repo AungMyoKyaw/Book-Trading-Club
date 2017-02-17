@@ -146,6 +146,7 @@ function getAllBook(req,res){
         return Book.find()
           .skip(Number(offset))
           .limit(Number(limit))
+          .sort({'_id':-1})
           .lean();
       })
       .then(bookList=>{

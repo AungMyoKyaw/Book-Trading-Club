@@ -1,0 +1,20 @@
+.full-width{
+  width: 80%;
+  height: 80%;
+}
+
+.full-width-button{
+  width:90%;
+  margin:auto;
+}
+
+a{
+  text-decoration: none;
+  color:white;
+}
+
+.center{
+  width:20%;
+  margin:auto;
+  background-color:#f6f6f6;
+}
