@@ -18,3 +18,8 @@ a{
   margin:auto;
   background-color:#f6f6f6;
 }
+
+.spinner{
+  width: 3em;
+  height: 3em;
+}

@@ -10,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class BooksComponent implements OnInit {
   books = [];
-  cols:number = 8;
+  cols:number = 6;
   more:boolean = false;
   loading:boolean = true;
   limit:number = 20;
@@ -20,9 +20,9 @@ export class BooksComponent implements OnInit {
 
   setCols(){
     if(window.innerWidth <= 480){
-      this.cols = 3;
+      this.cols = 2;
     } else if(window.innerWidth>480 && window.innerWidth<960) {
-      this.cols = 4;
+      this.cols = 3;
     } else {
       this.cols = 6;
     }
