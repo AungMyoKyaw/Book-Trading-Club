@@ -1,8 +1,18 @@
-<div fxLayout="column"
-     fxLayout.xs="row"
-     fxLayoutAlign="center center"
-     style="height:20em;width:100%"
+<md-card fxLayout
+         fxLayoutAlign="center"
+         fxLayoutWrap
 >
-  <md-spinner fxFlex="20%">
-  </md-spinner>
-</div>
+  <md-card-header fxFlex="70%" fxFlex.xs="100%">
+    <md-card-title>
+     <h2>User Books</h2>
+    </md-card-title>
+  </md-card-header>
+  <md-card-content fxFlex="70%" fxFlex.xs="100%" fxLayout fxLayoutAlign="center" fxLayoutWrap>
+    <md-input-container class="full-width" fxFlex="70%">
+      <input type="text" md-input placeholder="Add your Book" name="title" #search (keyup.enter)="adduserbook(search.value)" ngModel>
+    </md-input-container>
+    <button md-button fxFlex="20%" fxAlign="baseline" (click)="adduserbook(search.value)">
+      <md-icon>library_add</md-icon>
+    </button>
+  </md-card-content>
+</md-card>

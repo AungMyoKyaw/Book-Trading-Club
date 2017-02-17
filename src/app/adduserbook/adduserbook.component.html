@@ -1,0 +1,28 @@
+<h2 md-dialog-title>
+  Add Books
+  <button md-icon-button md-dialog-close class="close">&times;</button>
+</h2>
+<h3>{{searchText}}</h3>
+<md-dialog-content>
+  <div fxLayout fxLayoutAlign="center">
+    <md-spinner *ngIf="loading" color="warn" fxFlex="40%"></md-spinner>
+    <button *ngIf="error" md-raised-button color="warn" (click)="searchBook()">Try Again :(</button>
+    <button *ngIf="!isfound" md-raised-button color="warn" md-dialog-close>Not Found ! Try Again :(</button>
+  </div>
+  <md-grid-list cols="{{cols}}" gutterSize=".4em" rowHeight="3:5">
+    <md-grid-tile *ngFor="let book of books">
+      <md-grid-tile-header>
+        <a href="{{book.link}}" target="_blank">
+          {{book.title}}
+        </a>
+      </md-grid-tile-header>
+      <img src="{{book.thumbnail}}" alt="{{book.title}}" class="full-width">
+      <md-grid-tile-footer>
+        <button md-raised-button color="primary" class="full-width-button">Add Book</button>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+  </md-grid-list>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-raised-button md-dialog-close>Close</button>
+</md-dialog-actions>

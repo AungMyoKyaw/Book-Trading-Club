@@ -13,6 +13,7 @@ import { BooksComponent } from './books/books.component';
 import { UserbooksComponent } from './userbooks/userbooks.component';
 import { SettingsComponent } from './settings/settings.component';
 import { HomeComponent } from './home/home.component';
+import { AdduserbookComponent } from './adduserbook/adduserbook.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,10 @@ import { HomeComponent } from './home/home.component';
     BooksComponent,
     UserbooksComponent,
     SettingsComponent,
-    HomeComponent
+    HomeComponent,
+    AdduserbookComponent
   ],
+  entryComponents:[AdduserbookComponent],
   imports: [
     BrowserModule,
     FormsModule,

@@ -7,7 +7,7 @@ function search(req,res){
   let searchKeyWord = req.query.keyword;
   let field = req.query.field || 'title';
   let offset = req.query.offset || 0;
-  let limit = req.query.limit || 10;
+  let limit = req.query.limit || 24;
 
   let options = {
     key: process.env.API_KEY,

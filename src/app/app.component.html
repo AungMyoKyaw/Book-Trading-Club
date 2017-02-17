@@ -4,8 +4,8 @@
   </a>
   <span class="fill-remaining-space"></span>
   <div fxLayout
-       fxShow = "true"
-       fxHide.xs = "true"
+       fxShow.gt-xs = "TRUE"
+       fxHide.xs = "TRUE"
   >
     <span *ngIf="!auth">
       <a md-button routerLink="/signup" routerLinkActive="active">Sign Up</a>
@@ -28,8 +28,8 @@
   </div>
 
   <div fxLayout
-       fxHide = "true"
-       fxShow.xs="true"
+       fxShow.xs="TRUE"
+       fxHide.gt-xs = "TRUE"
   >
     <button md-icon-button [mdMenuTriggerFor]="menu">
       <md-icon>view_headline</md-icon>

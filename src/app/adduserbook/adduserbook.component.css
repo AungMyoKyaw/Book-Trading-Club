@@ -1,0 +1,19 @@
+.close{
+  float: right;
+}
+.full-width{
+  width:80%;
+  height:70%;
+}
+.full-width-button{
+  width: 80%;
+  margin:auto;
+}
+h3{
+  font-variant:small-caps;
+  font-size: x-large;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
