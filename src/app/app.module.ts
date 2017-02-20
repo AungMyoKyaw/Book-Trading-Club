@@ -14,6 +14,11 @@ import { UserbooksComponent } from './userbooks/userbooks.component';
 import { SettingsComponent } from './settings/settings.component';
 import { HomeComponent } from './home/home.component';
 import { AdduserbookComponent } from './adduserbook/adduserbook.component';
+import { BookrequesterComponent } from './bookrequester/bookrequester.component';
+import { MybooksComponent } from './mybooks/mybooks.component';
+import { BorrowedBooksComponent } from './borrowed-books/borrowed-books.component';
+import { TradeRequestsComponent } from './trade-requests/trade-requests.component';
+import { MyTradeRequestsComponent } from './my-trade-requests/my-trade-requests.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +29,14 @@ import { AdduserbookComponent } from './adduserbook/adduserbook.component';
     UserbooksComponent,
     SettingsComponent,
     HomeComponent,
-    AdduserbookComponent
+    AdduserbookComponent,
+    BookrequesterComponent,
+    MybooksComponent,
+    BorrowedBooksComponent,
+    TradeRequestsComponent,
+    MyTradeRequestsComponent
   ],
-  entryComponents:[AdduserbookComponent],
+  entryComponents:[AdduserbookComponent,BookrequesterComponent],
   imports: [
     BrowserModule,
     FormsModule,

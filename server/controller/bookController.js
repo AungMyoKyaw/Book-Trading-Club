@@ -159,13 +159,28 @@ function getAllBook(req,res){
       });
 }
 
+function getBookOwner(req,res){
+  let bookId = req.params.bookId;
+  UserBook.find({bookId:bookId})
+    .populate('userId','username')
+    .select('userId _id')
+    .lean()
+    .then(owners=>{
+      res.json(owners);
+    })
+    .catch(err=>{
+      res.json({err:err.message});
+    });
+}
+
 module.exports = {
   search,
   getAllBook,
   getUserBook,
   addUserBook,
   increaseUserBookCount,
-  removeUserBook
+  removeUserBook,
+  getBookOwner
 }
 
 //field List

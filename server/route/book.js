@@ -15,4 +15,7 @@ router.route('/book/user/:userBookId')
       .put(book.increaseUserBookCount)
       .delete(book.removeUserBook);
 
+router.route('/book/owner/:bookId')
+      .get(book.getBookOwner);
+
 module.exports = router;

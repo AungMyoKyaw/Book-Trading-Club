@@ -19,10 +19,10 @@ function requestBook(req,res){
   })
   .then(request=>{
     if(request){
-      res.sendStatus(202);
+      res.status(202).json({message:'acccepted'});
     } else {
       if(requesterID==ownerID){
-        res.sendStatus(202);
+        res.status(202).json({message:'acccepted'});
       } else {
         return newRequest.save();
       }

@@ -1,0 +1,11 @@
+.center{
+  display: block;
+  width:80%;
+  margin:auto;
+}
+
+p{
+  border-left: .3em solid #8BC34A;
+  padding-left: .4em;
+  font-weight: bold;
+}

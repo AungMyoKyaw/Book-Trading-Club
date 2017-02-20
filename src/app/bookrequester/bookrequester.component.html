@@ -1,0 +1,10 @@
+<h2 md-dialog-title>Request Book</h2>
+<p>Request from</p>
+<md-progress-bar mode="indeterminate" *ngIf="loading" style="margin-bottom: .3em"></md-progress-bar>
+<p *ngIf="requested">This book is successfully requested.</p>
+<md-dialog-content *ngIf="!requested">
+    <button md-raised-button *ngFor="let owner of ownerList" color="primary" class="center" (click)="requestBook(owner.userId._id)">{{owner.userId.username}}</button>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-dialog-close md-raised-button>Close</button>
+</md-dialog-actions>

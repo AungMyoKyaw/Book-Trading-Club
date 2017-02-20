@@ -28,4 +28,23 @@ export class UserbookService {
     return this.http.get(url)
       .map(res=>res.json());
   }
+
+  getOwner(bookId:string){
+    let url = `http://localhost:4444/api/book/owner/${bookId}`;
+    return this.http.get(url)
+      .map(res=>res.json());
+  }
+
+  requestBook(ownerId:string,bookId:string){
+    let url = `http://localhost:4444/api/request/${bookId}`;
+    let body = JSON.stringify({});
+    let headers = new Headers({
+      'Content-Type':'application/json',
+      'ownerID':ownerId
+    });
+    let reqOptions = new RequestOptions({headers:headers});
+    console.log(url,body,reqOptions);
+    return this.http.post(url,body,reqOptions)
+      .map(res=>res.json());
+  }
 }

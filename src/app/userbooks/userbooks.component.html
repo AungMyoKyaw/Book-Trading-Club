@@ -1,4 +1,4 @@
-<md-card fxLayout
+s<md-card fxLayout
          fxLayoutAlign="center"
          fxLayoutWrap
 >
@@ -15,4 +15,23 @@
       <md-icon>library_add</md-icon>
     </button>
   </md-card-content>
+</md-card>
+<md-card fxLayout
+         fxLayoutAlign="center"
+         fxLayoutWrap
+>
+  <md-tab-group fxFlex="70%" fxFlex.xs="100%">
+    <md-tab label="My Books">
+      <app-mybooks></app-mybooks>
+    </md-tab>
+    <md-tab label="Borrowed Books">
+      <app-borrowed-books></app-borrowed-books>
+    </md-tab>
+    <md-tab label="Trade Requests">
+      <app-trade-requests></app-trade-requests>
+    </md-tab>
+    <md-tab label="My Trade Requests">
+      <app-my-trade-requests></app-my-trade-requests>
+    </md-tab>
+  </md-tab-group>
 </md-card>
