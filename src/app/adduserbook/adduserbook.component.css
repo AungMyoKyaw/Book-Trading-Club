@@ -17,3 +17,7 @@ a{
   text-decoration: none;
   color: white;
 }
+.spinner{
+  width:3em;
+  height: 3em;
+}

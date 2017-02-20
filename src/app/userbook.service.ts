@@ -29,6 +29,12 @@ export class UserbookService {
       .map(res=>res.json());
   }
 
+  getUserBooks(limit:number,offset:number){
+    let url = `http://localhost:4444/api/book/user?limit=${limit}&offset=${offset}`;
+    return this.http.get(url)
+      .map(res=>res.json());
+  }
+
   getOwner(bookId:string){
     let url = `http://localhost:4444/api/book/owner/${bookId}`;
     return this.http.get(url)

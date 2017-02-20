@@ -122,7 +122,8 @@ function getUserBook(req,res){
     .then(userbook=>{
       res.status(200).json({
         numberOfBook:count,
-        noOfPageToDisplay:pageCount,
+        pageCount:pageCount,
+        currentPage : offset/limit+1,
         userbooks:userbook
       })
     })
