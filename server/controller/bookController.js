@@ -42,7 +42,7 @@ function addUserBook(req,res){
       })
     .then(newbook=>{
       newBookId = newbook._id;
-      return UserBook.findOne({bookId:newBookId});
+      return UserBook.findOne({bookId:newBookId,userId:userID});
     })
     .then(userbook=>{
       if(!userbook){
@@ -67,13 +67,28 @@ function addUserBook(req,res){
 
 function removeUserBook(req,res){
   let userBookId = req.params.userBookId;
-  UserBook.findByIdAndRemove(userBookId,(err,result)=>{
-    if(!err){
-      res.status(200).json({message:'Successfully removed'});
-    } else {
-      res.status(500).json({err:err.message});
-    }
-  });
+  let bookId;
+  UserBook.findById(userBookId)
+    .then(userbook=>{
+      bookId = userbook.bookId;
+      return UserBook.count({bookId:userbook.bookId});
+    })
+    .then(count=>{
+      if(count>=1){
+        return Book.remove({_id:bookId});
+      } else {
+        return true;
+      }
+    })
+    .then((data)=>{
+      return UserBook.remove({_id:userBookId});
+    })
+    .then(success=>{
+      res.status(200).json({message:'success'});
+    })
+    .catch(err=>{
+      res.json({err:err.message});
+    })
 }
 
 function increaseUserBookCount(req,res){
@@ -101,20 +116,22 @@ function getUserBook(req,res){
   let offset = req.query.offset || 0;
   let limit = req.query.limit || 10;
 
+  let searchQuery = {'userId':userID};
+
+  req.query.owner ? searchQuery.isOwner = false : searchQuery.isOwner=true;
+
   let count = 0;
   let pageCount = 0;
 
-  UserBook.find({userId:userID,isOwner:true})
+  UserBook.find(searchQuery)
     .count()
     .exec()
     .then(userBookCount=>{
       count = userBookCount;
       pageCount = Math.ceil(count/limit);
-      return UserBook.find({
-        userId:userID,
-        isOwner:true
-      })
+      return UserBook.find(searchQuery)
       .populate('bookId')
+      .sort({_id:-1})
       .skip(Number(offset))
       .limit(Number(limit))
       .lean()

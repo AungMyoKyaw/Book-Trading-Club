@@ -35,6 +35,24 @@ export class UserbookService {
       .map(res=>res.json());
   }
 
+  getUserBorrowedBooks(limit:number,offset:number){
+    let url = `http://localhost:4444/api/book/user?owner=1&limit=${limit}&offset=${offset}`;
+    return this.http.get(url)
+      .map(res=>res.json());
+  }
+
+  tradeRequests(limit:number,offset:number){
+    let url = `http://localhost:4444/api/requested/book?limit=${limit}&offset=${offset}`;
+    return this.http.get(url)
+      .map(res=>res.json());
+  }
+
+  mytradeRequests(limit:number,offset:number){
+    let url = `http://localhost:4444/api/offered/book?limit=${limit}&offset=${offset}`;
+    return this.http.get(url)
+      .map(res=>res.json());
+  }
+
   getOwner(bookId:string){
     let url = `http://localhost:4444/api/book/owner/${bookId}`;
     return this.http.get(url)
@@ -49,8 +67,18 @@ export class UserbookService {
       'ownerID':ownerId
     });
     let reqOptions = new RequestOptions({headers:headers});
-    console.log(url,body,reqOptions);
     return this.http.post(url,body,reqOptions)
+      .map(res=>res.json());
+  }
+
+  deleteUserBook(userbookId:string){
+    let url = `http://localhost:4444/api/book/user/${userbookId}`;
+    let body = JSON.stringify({});
+    let headers = new Headers({
+      'Content-Type':'application/json'
+    });
+    let reqOptions = new RequestOptions({headers:headers});
+    return this.http.delete(url,reqOptions)
       .map(res=>res.json());
   }
 }

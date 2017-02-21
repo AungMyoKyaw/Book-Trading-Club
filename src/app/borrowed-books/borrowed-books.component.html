@@ -1,3 +1,17 @@
-<p>
-  borrowed-books works!
-</p>
+<md-grid-list cols="{{cols}}" gutterSize=".4em" rowHeight="3:5">
+  <md-grid-tile *ngFor="let book of borrowedBooks">
+    <md-grid-tile-header>
+      <a href="{{book.bookId.link}}" target="_blank">
+        {{book.bookId.title}}
+      </a>
+    </md-grid-tile-header>
+    <img src="{{book.bookId.thumbnail}}" alt="{{book.bookId.title}}" class="full-width">
+  </md-grid-tile>
+</md-grid-list>
+<div fxLayout
+     fxLayoutAlign="center"
+     fxLayoutWrap
+>
+  <md-spinner *ngIf="loading" class="spinner" fxFlex="100%"></md-spinner>
+  <button md-button *ngIf="more" (click)="loadMore()" class="center" fxFlex="100%">More</button>
+</div>

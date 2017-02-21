@@ -8,7 +8,7 @@ const bookSchema = new schema({
   },//this id is not mongo generated id
   title:{
     type:String,
-    required:true
+    default:'Book Title'
   },
   authors:[String],
   publisher:{

@@ -1,0 +1,41 @@
+.full-width{
+  display: block;
+  width: 80%;
+  height: 70%;
+}
+
+.full-width-button{
+  width:90%;
+  margin:auto;
+}
+
+a{
+  text-decoration: none;
+  color:white;
+}
+
+.center{
+  width:20%;
+  margin:auto;
+  background-color:#f6f6f6;
+}
+
+.spinner{
+  width: 3em;
+  height: 3em;
+}
+
+.approve{
+  float: right;
+  margin-right: .3em;
+}
+
+.remove{
+  color: red;
+  opacity: 80%;
+}
+
+.grid-footer{
+  display: block;
+  width:100%;
+}

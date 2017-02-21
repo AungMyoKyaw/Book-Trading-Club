@@ -15,6 +15,7 @@ function requestBook(req,res){
   Request.findOne({
     requesterID : requesterID,
     ownerID : ownerID,
+    bookID : bookID,
     approved : false
   })
   .then(request=>{
@@ -56,6 +57,7 @@ function getRequestedBookList(req,res){
               ownerID : userID,
               approved : false
             })
+            .populate('bookID')
             .skip(Number(offset))
             .limit(Number(limit))
             .lean()
@@ -80,11 +82,10 @@ function offeredBookList(req,res){
 
   let numberOfBook,pageCount,currentPage;
 
-  Request.find({
+  Request.count({
     requesterID : userID,
     approved : false
   })
-  .count()
   .then(count=>{
     numberOfBook = count;
     pageCount = Math.ceil(numberOfBook/limit);
@@ -93,6 +94,7 @@ function offeredBookList(req,res){
               requesterID : userID,
               approved : false
             })
+            .populate('bookID')
             .skip(Number(offset))
             .limit(Number(limit))
             .lean()

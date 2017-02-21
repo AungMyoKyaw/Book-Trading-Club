@@ -34,9 +34,11 @@ export class BookrequesterComponent implements OnInit {
   }
 
   requestBook(ownerId:string){
+    console.log(ownerId,this.bookId);
     this.loading = true;
     this.userBookService.requestBook(ownerId,this.bookId)
       .subscribe(success=>{
+        console.log(success);
         this.loading = false;
         this.requested = true;
         this.userService.openSnackBar('This book is successfully requested.')

@@ -7,11 +7,11 @@
      <h2>User Books</h2>
     </md-card-title>
   </md-card-header>
-  <md-card-content fxFlex="70%" fxFlex.xs="100%" fxLayout fxLayoutAlign="center" fxLayoutWrap>
+  <md-card-content fxFlex="70%" fxFlex.xs="100%" fxLayout fxLayoutAlign="center">
     <md-input-container class="full-width" fxFlex="80%">
       <input type="text" md-input placeholder="Add your Book" name="title" #search (keyup.enter)="adduserbook(search.value)" ngModel>
     </md-input-container>
-    <button md-button fxFlex="20%" fxAlign="baseline" (click)="adduserbook(search.value)">
+    <button md-button fxFlex="10%" fxAlign="baseline" (click)="adduserbook(search.value)">
       <md-icon>library_add</md-icon>
     </button>
   </md-card-content>
@@ -27,7 +27,7 @@
     <md-tab label="Borrowed Books">
       <app-borrowed-books></app-borrowed-books>
     </md-tab>
-    <md-tab label="Trade Requests">
+    <md-tab label="Trade Requests for you">
       <app-trade-requests></app-trade-requests>
     </md-tab>
     <md-tab label="My Trade Requests">
