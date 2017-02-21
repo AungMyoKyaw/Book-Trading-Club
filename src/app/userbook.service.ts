@@ -8,13 +8,13 @@ export class UserbookService {
   constructor(private http:Http) { }
 
   searchBook(title:string){
-    let url = `http://localhost:4444/api/book/search?keyword=${title}`;
+    let url = `/api/book/search?keyword=${title}`;
     return this.http.get(url)
       .map(res=>res.json());
   }
 
   addBook(book:any){
-    let url = `http://localhost:4444/api/book/user`;
+    let url = `/api/book/user`;
     let body = JSON.stringify(book);
     let headers = new Headers({'Content-Type':'application/json'});
     let reqOptions = new RequestOptions({headers:headers});
@@ -24,43 +24,43 @@ export class UserbookService {
   }
 
   getAllBook(limit:number,offset:number){
-    let url = `http://localhost:4444/api/book?limit=${limit}&offset=${offset}`;
+    let url = `/api/book?limit=${limit}&offset=${offset}`;
     return this.http.get(url)
       .map(res=>res.json());
   }
 
   getUserBooks(limit:number,offset:number){
-    let url = `http://localhost:4444/api/book/user?limit=${limit}&offset=${offset}`;
+    let url = `/api/book/user?limit=${limit}&offset=${offset}`;
     return this.http.get(url)
       .map(res=>res.json());
   }
 
   getUserBorrowedBooks(limit:number,offset:number){
-    let url = `http://localhost:4444/api/book/user?owner=1&limit=${limit}&offset=${offset}`;
+    let url = `/api/book/user?owner=1&limit=${limit}&offset=${offset}`;
     return this.http.get(url)
       .map(res=>res.json());
   }
 
   tradeRequests(limit:number,offset:number){
-    let url = `http://localhost:4444/api/requested/book?limit=${limit}&offset=${offset}`;
+    let url = `/api/requested/book?limit=${limit}&offset=${offset}`;
     return this.http.get(url)
       .map(res=>res.json());
   }
 
   mytradeRequests(limit:number,offset:number){
-    let url = `http://localhost:4444/api/offered/book?limit=${limit}&offset=${offset}`;
+    let url = `/api/offered/book?limit=${limit}&offset=${offset}`;
     return this.http.get(url)
       .map(res=>res.json());
   }
 
   getOwner(bookId:string){
-    let url = `http://localhost:4444/api/book/owner/${bookId}`;
+    let url = `/api/book/owner/${bookId}`;
     return this.http.get(url)
       .map(res=>res.json());
   }
 
   requestBook(ownerId:string,bookId:string){
-    let url = `http://localhost:4444/api/request/${bookId}`;
+    let url = `/api/request/${bookId}`;
     let body = JSON.stringify({});
     let headers = new Headers({
       'Content-Type':'application/json',
@@ -72,7 +72,7 @@ export class UserbookService {
   }
 
   deleteUserBook(userbookId:string){
-    let url = `http://localhost:4444/api/book/user/${userbookId}`;
+    let url = `/api/book/user/${userbookId}`;
     let body = JSON.stringify({});
     let headers = new Headers({
       'Content-Type':'application/json'
@@ -83,7 +83,7 @@ export class UserbookService {
   }
 
   approveTrade(requestId:string){
-    let url = `http://localhost:4444/api/approve/book/${requestId}`;
+    let url = `/api/approve/book/${requestId}`;
     let body = JSON.stringify({});
     let headers = new Headers({
       'Content-Type':'application/json'
@@ -94,7 +94,7 @@ export class UserbookService {
   }
 
   rejectTrade(requestId:string){
-    let url = `http://localhost:4444/api/approve/book/${requestId}`;
+    let url = `/api/approve/book/${requestId}`;
     let body = JSON.stringify({});
     let headers = new Headers({
       'Content-Type':'application/json'

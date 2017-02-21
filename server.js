@@ -11,7 +11,7 @@ const app = express();
 
 const config = require('./server/config/config');
 const db = config.db;
-const port = config.port;
+const port = config.port || 8080;
 
 //connect to database
 mongoose.connect(db);

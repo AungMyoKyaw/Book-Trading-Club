@@ -8,7 +8,7 @@ export class UserService {
   constructor(private http:Http,private snackBar:MdSnackBar) { }
 
   login(data:any){
-    let url = `http://localhost:4444/api/login`;
+    let url = `/api/login`;
     let body = JSON.stringify(data);
     let headers = new Headers({'Content-Type':'application/json'});
     let reqOptions = new RequestOptions({headers:headers});
@@ -18,7 +18,7 @@ export class UserService {
   }
 
   signUp(data:any){
-    let url = `http://localhost:4444/api/signup`
+    let url = `/api/signup`
     let body = JSON.stringify(data);
     let headers = new Headers({'Content-Type':'application/json'});
     let reqOptions = new RequestOptions({headers:headers});
@@ -28,7 +28,7 @@ export class UserService {
   }
 
   logout(){
-    let url = `http://localhost:4444/api/logout`;
+    let url = `/api/logout`;
     let body = JSON.stringify({});
     let headers = new Headers({'Content-Type':'application/json'});
     let reqOptions = new RequestOptions({headers:headers});
@@ -38,19 +38,19 @@ export class UserService {
   }
 
   isAuth(){
-    let url = `http://localhost:4444/api/auth`;
+    let url = `/api/auth`;
     return this.http.get(url)
                     .map(res=>res);
   }
 
   getUserInfo(){
-    let url = `http://localhost:4444/api/user`;
+    let url = `/api/user`;
     return this.http.get(url)
                    .map(res=>res.json());
   }
 
   updateUserInfo(data:any){
-    let url = `http://localhost:4444/api/user`;
+    let url = `/api/user`;
     let body = JSON.stringify(data);
     let headers = new Headers({'Content-Type':'application/json'});
     let reqOptions = new RequestOptions({headers:headers});
@@ -59,7 +59,7 @@ export class UserService {
   }
 
   changeUserPassword(data:any){
-    let url = `http://localhost:4444/api/user/password`;
+    let url = `/api/user/password`;
     let body = JSON.stringify(data);
     let headers = new Headers({'Content-Type':'application/json'});
     let reqOptions = new RequestOptions({headers:headers});

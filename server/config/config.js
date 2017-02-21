@@ -12,7 +12,7 @@ let config = {
   },
   production:{
     db:'mongodb://book_trading_club:HMxwy37S2zJvb3F4P3rfjVCdmF8W9K@ds147799.mlab.com:47799/book_trading_club',
-    port:process.env.PORT || 8080
+    port:process.env.PORT
   }
 }
 
