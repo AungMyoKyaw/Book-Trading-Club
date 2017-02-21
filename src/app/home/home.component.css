@@ -1,0 +1,30 @@
+.center{
+  text-align:center;
+}
+
+h1 {
+    font-weight: bolder;
+    font-family: sans-serif;
+    font-size: 3em;
+}
+
+body{
+  background-color:#00bbd3;
+}
+
+.dev{
+  width:100%;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 1em;
+  color: black;
+  font-size: 1em;
+}
+
+.dev a{
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}

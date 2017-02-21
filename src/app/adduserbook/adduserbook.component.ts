@@ -20,7 +20,12 @@ export class AdduserbookComponent implements OnInit{
   isfound:boolean = true;
   addedBook=[];
 
-  constructor(public dialogRef:MdDialogRef<any>,private userBookService:UserbookService,private router:Router,private userService:UserService){}
+  constructor(
+    public dialogRef:MdDialogRef<AdduserbookComponent>,
+    private userBookService:UserbookService,
+    private router:Router,
+    private userService:UserService
+    ){}
 
   setCols(){
     if(window.innerWidth<=480){

@@ -16,6 +16,7 @@ export class MyTradeRequestsComponent implements OnInit {
   loading:boolean = true;
   limit:number = 20;
   offset:number = 0;
+  nobook:boolean = false;
 
   constructor(
     private userBookService:UserbookService,
@@ -36,7 +37,7 @@ export class MyTradeRequestsComponent implements OnInit {
     this.setCols();
     this.userBookService.mytradeRequests(this.limit,this.offset)
       .subscribe(books=>{
-        console.log(books);
+        books.books.length ? this.nobook = false : this.nobook = true;
         this.loading = false;
         this.offset = books.currentPage * this.limit;
         this.books = this.books.concat(books.books);

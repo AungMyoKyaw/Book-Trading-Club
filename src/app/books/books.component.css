@@ -23,3 +23,12 @@ a{
   width: 3em;
   height: 3em;
 }
+
+.nobook{
+  display: block;
+  width:100%;
+  padding:.3em;
+  line-height: 2em;
+  height: 2em;
+  border-left:solid red .3em;
+}

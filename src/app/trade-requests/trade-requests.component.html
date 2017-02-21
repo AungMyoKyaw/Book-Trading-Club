@@ -1,4 +1,6 @@
-<md-grid-list cols="{{cols}}" gutterSize=".4em" rowHeight="3:5">
+<md-progress-bar mode="indeterminate" *ngIf="approving"></md-progress-bar>
+<p *ngIf="nobook">No Trade Request</p>
+<md-grid-list cols="{{cols}}" gutterSize=".4em" rowHeight="3:5" *ngIf="!books.length">
   <md-grid-tile *ngFor="let book of books">
     <md-grid-tile-header>
       <a href="{{book.bookID.link}}" target="_blank">
@@ -8,8 +10,8 @@
     <img src="{{book.bookID.thumbnail}}" alt="{{book.bookID.title}}" class="full-width">
     <md-grid-tile-footer>
       <div class="grid-footer">
-        <button md-icon-button class="remove">X</button>
-        <button md-icon-button class="approve">
+        <button md-icon-button class="remove" (click)="reject(book._id)">X</button>
+        <button md-icon-button class="approve" (click)="approve(book._id)">
           <md-icon>done</md-icon>
         </button>
       </div>
@@ -21,5 +23,5 @@
      fxLayoutWrap
 >
   <md-spinner *ngIf="loading" class="spinner" fxFlex="100%"></md-spinner>
-  <button md-button *ngIf="more" (click)="loadMore()" class="center" fxFlex="100%">More</button>
+  <button md-button *ngIf="more && !nobook" (click)="loadMore()" class="center" fxFlex="100%">More</button>
 </div>

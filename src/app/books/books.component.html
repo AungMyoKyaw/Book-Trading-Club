@@ -7,7 +7,8 @@
       <h2>All Books</h2>
     </md-card-title>
   </md-card-header>
-  <md-card-content fxFlex="80%">
+  <p *ngIf="nobook" class="nobook" fxFlex="80%" fxFlex.xs="100%">NO BOOKS</p>
+  <md-card-content fxFlex="80%" *ngIf="books.length">
     <md-grid-list cols="{{cols}}" gutterSize=".4em" rowHeight="3:5">
       <md-grid-tile *ngFor="let book of books">
         <md-grid-tile-header>
@@ -23,5 +24,5 @@
     </md-grid-list>
   </md-card-content>
   <md-spinner *ngIf="loading" fxFlex="30%" class="spinner"></md-spinner>
-  <button md-button fxFlex="80%" *ngIf="more" (click)="loadMore()" class="center">More</button>
+  <button md-button fxFlex="80%" *ngIf="more && !nobook" (click)="loadMore()" class="center">More</button>
 </md-card>

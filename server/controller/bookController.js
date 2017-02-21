@@ -54,7 +54,7 @@ function addUserBook(req,res){
       } else {
         // req.body.count ? userbook.count+=req.body.count : userbook.count++;
         // return userbook.save();
-        res.sendStatus(202);
+        res.status(202).json(userbook);
       }
     })
     .then(newUserBook=>{

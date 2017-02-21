@@ -145,9 +145,21 @@ function approveTrade(req,res){
     });
 }
 
+function rejectTrade(req,res){
+  let requestId = req.params.requestID;
+  Request.findByIdAndRemove(requestId,(err,data)=>{
+    if(!err){
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(500);
+    }
+  });
+}
+
 module.exports = {
   requestBook,
   getRequestedBookList,
   offeredBookList,
-  approveTrade
+  approveTrade,
+  rejectTrade
 }

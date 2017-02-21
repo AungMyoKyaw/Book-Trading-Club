@@ -15,6 +15,7 @@ export class BorrowedBooksComponent implements OnInit {
   loading:boolean = true;
   limit:number = 20;
   offset:number = 0;
+  nobook:boolean = false;
 
   constructor(
     private userBookService:UserbookService,
@@ -35,7 +36,7 @@ export class BorrowedBooksComponent implements OnInit {
     this.setCols();
     this.userBookService.getUserBorrowedBooks(this.limit,this.offset)
       .subscribe(books=>{
-        console.log(books);
+        books.userbooks.length ? this.nobook = false : this.nobook = true;
         this.loading = false;
         this.offset = books.currentPage * this.limit;
         this.borrowedBooks = this.borrowedBooks.concat(books.userbooks);

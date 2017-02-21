@@ -16,6 +16,7 @@ export class MybooksComponent implements OnInit {
   limit:number = 20;
   offset:number = 0;
   removing:boolean = false;
+  nobook:boolean = false;
 
   constructor(
     private userBookService:UserbookService,
@@ -36,6 +37,7 @@ export class MybooksComponent implements OnInit {
     this.setCols();
     this.userBookService.getUserBooks(this.limit,this.offset)
       .subscribe(books=>{
+        books.userbooks.length ? this.nobook = false : this.nobook = true;
         this.loading = false;
         this.offset = books.currentPage * this.limit;
         this.books = this.books.concat(books.userbooks);
@@ -56,15 +58,19 @@ export class MybooksComponent implements OnInit {
     this.userBookService.deleteUserBook(userBookId)
       .subscribe(success=>{
         this.removing = false;
-        this.loading = true;
-        this.offset = 0;
-        this.books = [];
-        this.getUserBooks();
+        this.reloading();
       },
       error=>{
         this.removing = false;
         this.userService.openSnackBar('Error on removing userbook');
       })
+  }
+
+  reloading(){
+    this.loading = true;
+    this.offset = 0;
+    this.books = [];
+    this.getUserBooks();
   }
 
   loadMore(){

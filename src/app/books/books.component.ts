@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserbookService} from '../userbook.service';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 import { MdDialog,MdDialogRef } from '@angular/material';
 import { BookrequesterComponent } from '../bookrequester/bookrequester.component';
 
@@ -17,9 +18,15 @@ export class BooksComponent implements OnInit {
   loading:boolean = true;
   limit:number = 20;
   offset:number = 0;
+  nobook:boolean = false;
 
   dialogRef:MdDialogRef<any>;
-  constructor(private userBookService:UserbookService,private userService:UserService,public dialog:MdDialog) { }
+  constructor(
+    private userBookService:UserbookService,
+    private userService:UserService,
+    public dialog:MdDialog,
+    private router:Router
+    ) { }
 
   setCols(){
     if(window.innerWidth <= 480){
@@ -35,6 +42,7 @@ export class BooksComponent implements OnInit {
     this.setCols();
     this.userBookService.getAllBook(this.limit,this.offset)
       .subscribe(books=>{
+        books.books.length ? this.nobook = false : this.nobook = true;
         this.loading = false;
         this.offset = books.currentPage * this.limit;
         this.books = this.books.concat(books.books);
@@ -62,7 +70,18 @@ export class BooksComponent implements OnInit {
     this.dialogRef.componentInstance.bookId = bookId;
   }
 
+  checkAuth(){
+    this.userService.isAuth()
+      .subscribe(result=>{
+
+      },
+      error=>{
+        this.router.navigateByUrl('home');
+      })
+  }
+
   ngOnInit() {
+    this.checkAuth();
     this.getAllBook();
   }
 

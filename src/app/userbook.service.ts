@@ -20,7 +20,7 @@ export class UserbookService {
     let reqOptions = new RequestOptions({headers:headers});
 
     return this.http.post(url,body,reqOptions)
-      .map(res=>res);
+      .map(res=>res.json());
   }
 
   getAllBook(limit:number,offset:number){
@@ -80,5 +80,27 @@ export class UserbookService {
     let reqOptions = new RequestOptions({headers:headers});
     return this.http.delete(url,reqOptions)
       .map(res=>res.json());
+  }
+
+  approveTrade(requestId:string){
+    let url = `http://localhost:4444/api/approve/book/${requestId}`;
+    let body = JSON.stringify({});
+    let headers = new Headers({
+      'Content-Type':'application/json'
+    });
+    let reqOptions = new RequestOptions({headers:headers});
+    return this.http.put(url,reqOptions)
+      .map(res=>res.json());
+  }
+
+  rejectTrade(requestId:string){
+    let url = `http://localhost:4444/api/approve/book/${requestId}`;
+    let body = JSON.stringify({});
+    let headers = new Headers({
+      'Content-Type':'application/json'
+    });
+    let reqOptions = new RequestOptions({headers:headers});
+    return this.http.delete(url,reqOptions)
+      .map(res=>res);
   }
 }

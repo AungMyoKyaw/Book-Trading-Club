@@ -11,6 +11,7 @@ router.route('/offered/book')//requester
       .get(request.offeredBookList);
 
 router.route('/approve/book/:requestID')
-      .put(request.approveTrade);
+      .put(request.approveTrade)
+      .delete(request.rejectTrade);
 
 module.exports = router;
