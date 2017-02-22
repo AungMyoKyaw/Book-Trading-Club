@@ -1,5 +1,5 @@
 <p *ngIf="nobook">No Books</p>
-<md-grid-list cols="{{cols}}" gutterSize=".4em" rowHeight="3:5" *ngIf="!borrowedBooks.length">
+<md-grid-list cols="{{cols}}" gutterSize=".4em" rowHeight="3:5" *ngIf="borrowedBooks.length">
   <md-grid-tile *ngFor="let book of borrowedBooks">
     <md-grid-tile-header>
       <a href="{{book.bookId.link}}" target="_blank">

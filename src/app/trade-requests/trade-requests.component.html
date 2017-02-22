@@ -1,6 +1,6 @@
 <md-progress-bar mode="indeterminate" *ngIf="approving"></md-progress-bar>
 <p *ngIf="nobook">No Trade Request</p>
-<md-grid-list cols="{{cols}}" gutterSize=".4em" rowHeight="3:5" *ngIf="!books.length">
+<md-grid-list cols="{{cols}}" gutterSize=".4em" rowHeight="3:5" *ngIf="books.length">
   <md-grid-tile *ngFor="let book of books">
     <md-grid-tile-header>
       <a href="{{book.bookID.link}}" target="_blank">
