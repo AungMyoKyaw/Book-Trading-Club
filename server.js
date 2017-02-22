@@ -39,7 +39,9 @@ process.on('SIGINT',()=>{
 // });
 
 //needed middleware
-app.use(compression());
+app.use(compression({
+  level:9
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(session({secret:'ilovejs',resave:true,saveUninitialized:true}));
