@@ -10,13 +10,13 @@
   <form fxFlex="100%" fxLayout fxLayoutAlign="center" fxLayoutWrap #profile="ngForm" (ngSubmit)="updateUserInfo(profile.value)">
   <md-card-content fxFlex="80%" fxFlex.xs="100%">
     <md-input-container class="full-width">
-      <input md-input placeholder="{{userInfo.username}}" type="text" name="username" ngModel>
+      <input mdInput placeholder="{{userInfo.username}}" type="text" name="username" ngModel>
     </md-input-container>
     <md-input-container class="full-width">
-      <input md-input placeholder="{{userInfo.city}}" type="text" name="city" ngModel>
+      <input mdInput placeholder="{{userInfo.city}}" type="text" name="city" ngModel>
     </md-input-container>
     <md-input-container class="full-width">
-      <input md-input placeholder="{{userInfo.state}}" type="text" name="state" ngModel>
+      <input mdInput placeholder="{{userInfo.state}}" type="text" name="state" ngModel>
     </md-input-container>
   </md-card-content>
   <md-card-actions fxFlex="80%" fxFlex.xs="100%">
@@ -42,10 +42,10 @@
   <form #f="ngForm" (ngSubmit)="changeUserPassword(f.value)" fxFlex="100%" fxLayout fxLayoutAlign="center" fxLayoutWrap>
   <md-card-content fxFlex="80%" fxFlex.xs="100%">
     <md-input-container class="full-width">
-      <input md-input placeholder="Current Password" type="password" name="oldPassword" ngModel>
+      <input mdInput placeholder="Current Password" type="password" name="oldPassword" ngModel>
     </md-input-container>
     <md-input-container class="full-width">
-      <input md-input placeholder="New Password" type="password" name="newPassword" ngModel>
+      <input mdInput placeholder="New Password" type="password" name="newPassword" ngModel>
     </md-input-container>
   </md-card-content>
   <md-card-actions fxFlex="80%" fxFlex.xs="100%">
