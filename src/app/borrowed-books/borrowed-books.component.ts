@@ -16,6 +16,7 @@ export class BorrowedBooksComponent implements OnInit {
   limit:number = 20;
   offset:number = 0;
   nobook:boolean = false;
+  removing:boolean = false;
 
   constructor(
     private userBookService:UserbookService,
@@ -49,6 +50,26 @@ export class BorrowedBooksComponent implements OnInit {
       error=>{
         this.loading = false;
         this.userService.openSnackBar(error.statusText);
+      })
+  }
+
+  reloading(){
+    this.loading = true;
+    this.offset = 0;
+    this.borrowedBooks = [];
+    this.getUserBorrowedBooks();
+  }
+
+  removeUserBook(userBookId:string){
+    this.removing = true;
+    this.userBookService.deleteUserBook(userBookId)
+      .subscribe(success=>{
+        this.removing = false;
+        this.reloading();
+      },
+      error=>{
+        this.removing = false;
+        this.userService.openSnackBar('Error on removing userbook');
       })
   }
 

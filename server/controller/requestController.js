@@ -57,6 +57,7 @@ function getRequestedBookList(req,res){
               ownerID : userID,
               approved : false
             })
+            .sort({_id:-1})
             .populate('bookID')
             .skip(Number(offset))
             .limit(Number(limit))
@@ -94,6 +95,7 @@ function offeredBookList(req,res){
               requesterID : userID,
               approved : false
             })
+            .sort({_id:-1})
             .populate('bookID')
             .skip(Number(offset))
             .limit(Number(limit))

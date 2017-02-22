@@ -43,9 +43,6 @@ export class UserbooksComponent implements OnInit {
         this.router.navigateByUrl('/home',{ skipLocationChange: true })
           .then(()=>{
             this.router.navigateByUrl('userbooks')
-              .then(()=>{
-                window.location.reload(true);
-              });
         })
       });
     }

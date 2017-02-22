@@ -23,3 +23,9 @@ a{
   width: 3em;
   height: 3em;
 }
+
+.remove{
+  display: block;
+  color: red;
+  opacity: 80%;
+}
