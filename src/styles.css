@@ -2,4 +2,13 @@
 body{
   margin:0;
 }
+.loading{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-weight: bolder;
+  font-size: 3.5em;
+  color: #FF9800;
+}
 @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css'

@@ -18,3 +18,6 @@ npm start production
 ```
 export API_KEY=Your_Google_API_KEY
 ```
+```
+export BTC_DB=Your_DB_URL
+```

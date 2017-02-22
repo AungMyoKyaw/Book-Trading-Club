@@ -7,11 +7,11 @@ envName = process.env.NODE_ENV || 'development';
 //config
 let config = {
   development:{
-    db:'mongodb://book_trading_club:HMxwy37S2zJvb3F4P3rfjVCdmF8W9K@ds147799.mlab.com:47799/book_trading_club',
+    db:process.env.BTC_DB,
     port:4444
   },
   production:{
-    db:'mongodb://book_trading_club:HMxwy37S2zJvb3F4P3rfjVCdmF8W9K@ds147799.mlab.com:47799/book_trading_club',
+    db:process.env.BTC_DB,
     port:process.env.PORT
   }
 }
